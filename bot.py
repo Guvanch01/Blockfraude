@@ -297,7 +297,7 @@ async def cmd_pay(update: Update, context: ContextTypes.DEFAULT_TYPE):
 def main():
     app = Application.builder().token(BOT_TOKEN).build()
 
-    # Commands
+    # Komandalar
     app.add_handler(CommandHandler("start", cmd_start))
     app.add_handler(CommandHandler("help", cmd_help))
     app.add_handler(CommandHandler("register", cmd_register))
@@ -306,14 +306,17 @@ def main():
     app.add_handler(CommandHandler("pricing", cmd_pricing))
     app.add_handler(CommandHandler("pay", cmd_pay))
 
-    # Message handler (text, photo, video, caption)
+    # Message handler
     app.add_handler(MessageHandler(
         (filters.TEXT | filters.CAPTION | filters.PHOTO | filters.VIDEO) & ~filters.COMMAND,
         handle_message
     ))
 
     logger.info("🚀 GuardBot Professional English Version Started...")
-    app.run_polling(drop_pending_updates=True)
+    
+    # Render we başga hostinglerde işleýän wariant
+    import asyncio
+    asyncio.run(app.run_polling(drop_pending_updates=True))
 
 
 if __name__ == "__main__":
