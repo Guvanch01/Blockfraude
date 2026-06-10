@@ -1,5 +1,5 @@
 """
-GuardBot — Professional Telegram Group Protection Bot
+Blockfraude — Professional Telegram Group Protection Bot
 Automatically blocks Scam and Sexual content
 """
 
