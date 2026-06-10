@@ -290,14 +290,9 @@ async def cmd_pay(update: Update, context: ContextTypes.DEFAULT_TYPE):
     await update.message.reply_text(msg, parse_mode=ParseMode.HTML)
 
 
-# ─────────────────────────────────────────
-# Main (Render.com üçin iň dogry wariant)
-# ─────────────────────────────────────────
-
 def main():
     app = Application.builder().token(BOT_TOKEN).build()
 
-    # Komandalar
     app.add_handler(CommandHandler("start", cmd_start))
     app.add_handler(CommandHandler("help", cmd_help))
     app.add_handler(CommandHandler("register", cmd_register))
@@ -306,7 +301,6 @@ def main():
     app.add_handler(CommandHandler("pricing", cmd_pricing))
     app.add_handler(CommandHandler("pay", cmd_pay))
 
-    # Esasy handler
     app.add_handler(MessageHandler(
         (filters.TEXT | filters.CAPTION | filters.PHOTO | filters.VIDEO) & ~filters.COMMAND,
         handle_message
@@ -314,8 +308,8 @@ def main():
 
     logger.info("🚀 GuardBot Professional English Version Started...")
 
-    # Render.com üçin iň amatly we ýönekeý usul
-    app.run_polling(drop_pending_updates=True)
+    import asyncio
+    asyncio.run(app.run_polling(drop_pending_updates=True))
 
 
 if __name__ == "__main__":
