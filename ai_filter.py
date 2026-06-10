@@ -1,5 +1,6 @@
 """
-AI Filter — Güýçli Scam + Sexual Content Detector
+AI Filter — Scam and sexual content detection.
+"""
 Only xAI Grok (grok-4.3)
 """
 
