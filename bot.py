@@ -306,17 +306,21 @@ def main():
     app.add_handler(CommandHandler("pricing", cmd_pricing))
     app.add_handler(CommandHandler("pay", cmd_pay))
 
-    # Message handler
+    # Esasy handler
     app.add_handler(MessageHandler(
         (filters.TEXT | filters.CAPTION | filters.PHOTO | filters.VIDEO) & ~filters.COMMAND,
         handle_message
     ))
 
     logger.info("🚀 GuardBot Professional English Version Started...")
-    
-    # Render we başga hostinglerde işleýän wariant
+
+    # Render.com üçin iň amatly usul
     import asyncio
-    asyncio.run(app.run_polling(drop_pending_updates=True))
+    try:
+        asyncio.run(app.run_polling(drop_pending_updates=True))
+    except RuntimeError:
+        # Render üçin alternatiw usul
+        app.run_polling(drop_pending_updates=True)
 
 
 if __name__ == "__main__":
