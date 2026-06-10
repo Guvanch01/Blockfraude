@@ -291,7 +291,7 @@ async def cmd_pay(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
 
 # ─────────────────────────────────────────
-# Main
+# Main (Render.com üçin iň dogry wariant)
 # ─────────────────────────────────────────
 
 def main():
@@ -314,13 +314,8 @@ def main():
 
     logger.info("🚀 GuardBot Professional English Version Started...")
 
-    # Render.com üçin iň amatly usul
-    import asyncio
-    try:
-        asyncio.run(app.run_polling(drop_pending_updates=True))
-    except RuntimeError:
-        # Render üçin alternatiw usul
-        app.run_polling(drop_pending_updates=True)
+    # Render.com üçin iň amatly we ýönekeý usul
+    app.run_polling(drop_pending_updates=True)
 
 
 if __name__ == "__main__":
