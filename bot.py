@@ -226,7 +226,7 @@ async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE):
     # Build text to analyze
     text = message.text or message.caption or ""
 
-    if message.forward_origin or message.forward_from or message.forward_from_chat:
+    if message.forward_origin:
         text += " [FORWARDED]"
 
     # Short messages with no media — skip
